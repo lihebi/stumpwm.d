@@ -1,0 +1,1 @@
+#+TITLE: StumpWM Config file
