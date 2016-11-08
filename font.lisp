@@ -17,8 +17,8 @@
 ;; load a module by (ql:quickload "xxx")
 
 ;; This is very slow, use with caution! neng bu yong jiu bu yong
+;; (HEBI: run this to cache fonts (not the fc-cache))
 ;; (xft:cache-fonts)
-
 
 (defun get-dpi()
   (values
