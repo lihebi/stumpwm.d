@@ -8,6 +8,8 @@
 (setf *startup-message* nil)
 
 (stumpwm:init-load-path "~/.stumpwm.d/modules/")
+(stumpwm:init-load-path "~/quicklisp/dists/quicklisp/software/")
+(stumpwm:init-load-path "~/.stumpwm.d/modules/")
 ;; (stumpwm:add-to-load-path "~/.stumpwm.d/modules/util/ttf-fonts")
 (load-module "ttf-fonts")
 (load-module "cpu")
