@@ -7,6 +7,9 @@
 ;; disable welcome message
 (setf *startup-message* nil)
 
+;; Not sure which should comes first!!
+;; TODO 1. make this config more robust in terms of not installing quicklisp, clx-truetype, zpng
+;; TODO 2. make the setup-debian script complete by installing everything
 (stumpwm:init-load-path "~/.stumpwm.d/modules/")
 (stumpwm:init-load-path "~/quicklisp/dists/quicklisp/software/")
 (stumpwm:init-load-path "~/.stumpwm.d/modules/")
@@ -57,6 +60,3 @@
 (defcommand reboot () ()
             (run-shell-command "/sbin/reboot"))
 
-;; Not sure which should comes first!!
-;; TODO 1. make this config more robust in terms of not installing quicklisp, clx-truetype, zpng
-;; TODO 2. make the setup-debian script complete by installing everything
