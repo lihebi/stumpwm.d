@@ -35,14 +35,16 @@
 ;; I have to "define" it to do some dummy echo
 (define-key *root-map* (kbd "k") "echo Zzz..")
 
+;; The C-t k actually mapped to "delete", while C-t K mapped to "kill"
+
 (defcommand rotate-left () ()
-            (run-shell-command "xrandr --output HDMI-0 --rotate left"))
+            (run-shell-command "xrandr --output VGA-1 --rotate left"))
 
 (defcommand rotate-right () ()
-            (run-shell-command "xrandr --output HDMI-0 --rotate right"))
+            (run-shell-command "xrandr --output VGA-1 --rotate right"))
 
 (defcommand rotate-normal () ()
-            (run-shell-command "xrandr --output HDMI-0 --rotate normal"))
+            (run-shell-command "xrandr --output VGA-1 --rotate normal"))
 
 (defcommand suspend () ()
             (run-shell-command "systemctl suspend"))
@@ -53,3 +55,6 @@
 (defcommand reboot () ()
             (run-shell-command "/sbin/reboot"))
 
+;; Not sure which should comes first!!
+;; TODO 1. make this config more robust in terms of not installing quicklisp, clx-truetype, zpng
+;; TODO 2. make the setup-debian script complete by installing everything
