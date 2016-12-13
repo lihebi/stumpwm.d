@@ -23,6 +23,13 @@
             (run-or-raise "urxvt -e tmux" '(:class "URxvt")))
 (define-key *root-map* (kbd "c") "terminal")
 
+
+(defcommand terminal-without-tmux () ()
+            "run shell command urxvt, and get the tmux"
+            (run-shell-command "urxvt"))
+
+(define-key *root-map* (kbd "C-c") "terminal-without-tmux")
+
 (defcommand xselyank () ()
             "Paste X Sel not using shift-insert"
             ;; (echo "what?")
