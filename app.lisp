@@ -9,13 +9,18 @@
 
 (define-key *root-map* (kbd "C-e") "emacs-with-server-new")
 
-(defcommand browser () ()
-            "run or raise conkeror"
-            (run-or-raise "conkeror" '(:class "Conkeror")))
-
 ;; (defcommand browser () ()
-;;             "run or raise chromium"
-;;             (run-or-raise "chromium" '(:class "chromium")))
+;;   "run or raise conkeror"
+;;   (run-or-raise "conkeror" '(:class "Conkeror")))
+
+(defcommand browser () ()
+  "run or raise chromium"
+  (run-or-raise
+   ;; "chromium"
+   ;; for bypassing the chromium restriction in the recent update
+   "chromium --enable-remote-extensions"
+   '(:class "Chromium")))
+
 (define-key *root-map* (kbd "w") "browser")
 
 (defcommand terminal () ()
