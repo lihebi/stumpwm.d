@@ -7,5 +7,5 @@
     m))
 
 (stumpwm:define-key stumpwm:*root-map* (stumpwm:kbd "f") '*frame-map*)
-(define-key *root-map* (kbd "o") "fother")
-(define-key *root-map* (kbd "C-o") "fother")
+(define-key *root-map* (kbd "o") "other")
+(define-key *root-map* (kbd "C-o") "other")
