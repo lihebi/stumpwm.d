@@ -35,6 +35,7 @@
             "^>" ; right align
             " ^7* " '(:eval (pretty-time)); date
             " %c %t" ; cpu
+            " %M %N"
             ;; " %b" ; battery
             " %B" ; battery-portable
             ;; " %I" ; wifi

@@ -16,6 +16,7 @@
 ;; (stumpwm:add-to-load-path "~/.stumpwm.d/modules/util/ttf-fonts")
 (load-module "ttf-fonts")
 (load-module "cpu")
+(load-module "mem")
 ;; The "battery" will stuck on macbook
 (load-module "battery-portable")
 (load-module "wifi")
