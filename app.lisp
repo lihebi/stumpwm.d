@@ -9,6 +9,10 @@
 
 (define-key *root-map* (kbd "C-e") "emacs-with-server-new")
 
+(defcommand emacs-start-server() ()
+            "Run emacs server"
+            (run-shell-command "emacs --daemon"))
+
 ;; (defcommand browser () ()
 ;;   "run or raise conkeror"
 ;;   (run-or-raise "conkeror" '(:class "Conkeror")))
