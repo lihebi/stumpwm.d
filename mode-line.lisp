@@ -31,7 +31,7 @@
 
 
 
-(add-screen-mode-line-formatter #\g 'fmt-graphic-temp)
+;; (add-screen-mode-line-formatter #\g 'fmt-graphic-temp)
 (defun graphic-temp()
   (if (string/= (nvidia-temp) "")
       (concatenate 'string "NVIDIA: "
@@ -43,16 +43,16 @@
       ;; "no"
       ))
 
-(defcommand get-graphic-temp()()
+(defcommand hebi-graphic-temp()()
             (graphic-temp))
 
 (defun nvidia-temp()
   (run-shell-command "nvidia-settings -q gpucoretemp | grep Attribute | awk '{print $4}'" t))
 
-(defun fmt-graphic-temp (ml)
-  "Returns a string representing the current CPU frequency (especially useful for laptop users.)"
-  (declare (ignore ml))
-  (graphic-temp))
+;; (defun fmt-graphic-temp (ml)
+;;   "Returns a string representing the current CPU frequency (especially useful for laptop users.)"
+;;   (declare (ignore ml))
+;;   (graphic-temp))
 
 ;; Modeline format
 (setf *screen-mode-line-format*
@@ -60,8 +60,7 @@
             "^>" ; right align
             " ^2* " '(:eval (pretty-time)); date
             " ^6%c %f %t" ; cpu
-            " ^3GPU: %g"
-            " ^6%M"
+            " ^3%M"
             ;; " %b" ; battery
             ;; " %B" ; battery-portable
             ;; " %I" ; wifi

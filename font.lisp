@@ -26,9 +26,9 @@
     (run-shell-command
      "echo $(xrdb -query | grep dpi | awk '{print $2}') | bc | tr '\n' ' '" t))))
 
-(defcommand hebi()()
-            (echo (get-dpi))
-            (echo (get-font-size)))
+;; (defcommand hebi()()
+;;             (echo (get-dpi))
+;;             (echo (get-font-size)))
 
 (defun get-font-size()
   (case (get-dpi)
