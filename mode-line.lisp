@@ -29,14 +29,35 @@
             yr (- tz))))
 
 
+
+
+(add-screen-mode-line-formatter #\g 'fmt-graphic-temp)
+(defun graphic-temp()
+  (string-trim '(#\Space #\Newline #\Backspace #\Tab #\Linefeed #\Page #\Return #\Rubout)
+               (run-shell-command "sensors | awk '/PCI/ {ok=1}; /temp/ && ok==1 {print $2; exit;}'" t)))
+(defcommand get-graphic-temp()()
+            (graphic-temp))
+
+(defun fmt-graphic-temp (ml)
+  "Returns a string representing the current CPU frequency (especially useful for laptop users.)"
+  (declare (ignore ml))
+  (graphic-temp))
+  ;; (let ((mhz (parse-integer (get-proc-file-field "/proc/cpuinfo" "cpu MHz")
+  ;;                           :junk-allowed t)))
+  ;;   (if (>= mhz 1000)
+  ;;       (format nil "~,2FGHz" (/ mhz 1000))
+  ;;       (format nil "~DMHz" mhz))))
+
+
 ;; Modeline format
 (setf *screen-mode-line-format*
       (list "[^B%n^b] %W " ; groups/windows
             "^>" ; right align
-            " ^7* " '(:eval (pretty-time)); date
-            " %c %t" ; cpu
-            " %M %N"
+            " ^2* " '(:eval (pretty-time)); date
+            " ^6%c %f %t" ; cpu
+            " ^3GPU: %g"
+            " ^6%M"
             ;; " %b" ; battery
-            " %B" ; battery-portable
+            ;; " %B" ; battery-portable
             ;; " %I" ; wifi
             ))
