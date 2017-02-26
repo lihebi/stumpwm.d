@@ -33,21 +33,26 @@
 
 (add-screen-mode-line-formatter #\g 'fmt-graphic-temp)
 (defun graphic-temp()
-  (string-trim '(#\Space #\Newline #\Backspace #\Tab #\Linefeed #\Page #\Return #\Rubout)
-               (run-shell-command "sensors | awk '/PCI/ {ok=1}; /temp/ && ok==1 {print $2; exit;}'" t)))
+  (if (string/= (nvidia-temp) "")
+      (concatenate 'string "NVIDIA: "
+                   (string-trim '(#\Newline #\Space) (nvidia-temp)))
+      ;; AMD
+      (string-trim '(#\Space #\Newline #\Backspace #\Tab #\Linefeed #\Page #\Return #\Rubout)
+                   (run-shell-command
+                    "sensors | awk '/PCI/ {ok=1}; /temp/ && ok==1 {print $2; exit;}'" t))
+      ;; "no"
+      ))
+
 (defcommand get-graphic-temp()()
             (graphic-temp))
+
+(defun nvidia-temp()
+  (run-shell-command "nvidia-settings -q gpucoretemp | grep Attribute | awk '{print $4}'" t))
 
 (defun fmt-graphic-temp (ml)
   "Returns a string representing the current CPU frequency (especially useful for laptop users.)"
   (declare (ignore ml))
   (graphic-temp))
-  ;; (let ((mhz (parse-integer (get-proc-file-field "/proc/cpuinfo" "cpu MHz")
-  ;;                           :junk-allowed t)))
-  ;;   (if (>= mhz 1000)
-  ;;       (format nil "~,2FGHz" (/ mhz 1000))
-  ;;       (format nil "~DMHz" mhz))))
-
 
 ;; Modeline format
 (setf *screen-mode-line-format*
