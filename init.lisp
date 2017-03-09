@@ -34,6 +34,7 @@
 (load "~/.stumpwm.d/app.lisp")
 (load "~/.stumpwm.d/mac.lisp")
 (load "~/.stumpwm.d/screenshot.lisp")
+(load "~/.stumpwm.d/monitor.lisp")
 
 
 ;; I want to disable C-t k because it got mis-shooting!
@@ -44,14 +45,6 @@
 
 ;; The C-t k actually mapped to "delete", while C-t K mapped to "kill"
 
-(defcommand rotate-left () ()
-            (run-shell-command "xrandr --output VGA-1 --rotate left"))
-
-(defcommand rotate-right () ()
-            (run-shell-command "xrandr --output VGA-1 --rotate right"))
-
-(defcommand rotate-normal () ()
-            (run-shell-command "xrandr --output VGA-1 --rotate normal"))
 
 (defcommand suspend () ()
             (run-shell-command "systemctl suspend"))
