@@ -20,25 +20,25 @@
 ;; (HEBI: run this to cache fonts (not the fc-cache))
 ;; (xft:cache-fonts)
 
-(defun get-dpi()
-  (values
-   (parse-integer
-    (run-shell-command
-     "echo $(xrdb -query | grep dpi | awk '{print $2}') | bc | tr '\n' ' '" t))))
+;; (defun get-dpi()
+;;   (values
+;;    (parse-integer
+;;     (run-shell-command
+;;      "echo $(xrdb -query | grep dpi | awk '{print $2}') | bc | tr '\n' ' '" t))))
 
-;; (defcommand hebi()()
-;;             (echo (get-dpi))
-;;             (echo (get-font-size)))
+;; ;; (defcommand hebi()()
+;; ;;             (echo (get-dpi))
+;; ;;             (echo (get-font-size)))
 
-(defun get-font-size()
-  (case (get-dpi)
-    (96 12)
-    (144 16)
-    (otherwise 14)))
+;; (defun get-font-size()
+;;   (case (get-dpi)
+;;     (96 12)
+;;     (144 16)
+;;     (otherwise 14)))
 
 (set-font
  (list
-  (make-instance 'xft:font :family "WenQuanYi Micro Hei Mono" :subfamily "Regular" :size (get-font-size))
+  (make-instance 'xft:font :family "WenQuanYi Micro Hei Mono" :subfamily "Regular" :size 12)
   ;; (make-instance 'xft:font :family "DejaVu Sans Mono" :subfamily "Oblique" :size 16)
   ;; (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 20)
   ;; (make-instance 'xft:font :family "cwTeXFangSong" :subfamily "Medium" :size 16)

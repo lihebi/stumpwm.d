@@ -12,6 +12,7 @@
 ;; TODO 2. make the setup-debian script complete by installing everything
 (stumpwm:init-load-path "~/.stumpwm.d/modules/")
 (stumpwm:init-load-path "~/quicklisp/dists/quicklisp/software/")
+(stumpwm:init-load-path "/usr/share/common-lisp/source")
 (stumpwm:init-load-path "~/.stumpwm.d/modules/")
 ;; (stumpwm:add-to-load-path "~/.stumpwm.d/modules/util/ttf-fonts")
 (load-module "ttf-fonts")
