@@ -27,6 +27,12 @@
 
 (define-key *root-map* (kbd "w") "browser")
 
+(defcommand browser-new () ()
+            "run a new instance of browser"
+            (run-shell-command "chromium --enable-remote-extensions"))
+;; (undefine-key *root-map* (kbd "C-w"))
+(define-key *root-map* (kbd "C-w") "browser-new")
+
 (defcommand terminal () ()
             "run or raise urxvt"
             (run-or-raise "urxvt -e tmux" '(:class "URxvt")))
