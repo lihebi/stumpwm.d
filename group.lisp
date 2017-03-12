@@ -20,6 +20,7 @@
 (setf *mouse-focus-policy* :click)
 ;; Create groups
 (setf (group-name (first (screen-groups (current-screen)))) "Default")
+(gnewbg "Default-2")
 (gnewbg-float "Float")
 
 ;; Shell program used by run-shell-command
