@@ -10,10 +10,18 @@
 ;; Not sure which should comes first!!
 ;; TODO 1. make this config more robust in terms of not installing quicklisp, clx-truetype, zpng
 ;; TODO 2. make the setup-debian script complete by installing everything
-(stumpwm:init-load-path "~/.stumpwm.d/modules/")
+;; (stumpwm:init-load-path "~/.stumpwm.d/modules/")
+
+
 (stumpwm:init-load-path "~/quicklisp/dists/quicklisp/software/")
 (stumpwm:init-load-path "/usr/share/common-lisp/source")
-(stumpwm:init-load-path "~/.stumpwm.d/modules/")
+
+;; when installing stumpwm-contrib and quicklisp via AUR, these two pathes needs to be added
+(stumpwm:init-load-path "/usr/lib/quicklisp/dists/quicklisp/software/")
+(stumpwm:init-load-path "/usr/share/stumpwm/contrib/")
+
+
+;; (stumpwm:init-load-path "~/.stumpwm.d/modules/")
 ;; (stumpwm:add-to-load-path "~/.stumpwm.d/modules/util/ttf-fonts")
 (load-module "ttf-fonts")
 (load-module "cpu")
@@ -26,16 +34,18 @@
 
 (load "~/.stumpwm.d/sudo.lisp")
 (load "~/.stumpwm.d/mode-line.lisp")
-(load "~/.stumpwm.d/font.lisp")
 (load "~/.stumpwm.d/group.lisp")
 
 
 (load "~/.stumpwm.d/frame.lisp")
 (load "~/.stumpwm.d/app.lisp")
 (load "~/.stumpwm.d/mac.lisp")
-(load "~/.stumpwm.d/screenshot.lisp")
 (load "~/.stumpwm.d/monitor.lisp")
 
+
+;; These two lines requires cl packages, remove so that I can get a smooth boot
+(load "~/.stumpwm.d/font.lisp")
+(load "~/.stumpwm.d/screenshot.lisp")
 
 ;; I want to disable C-t k because it got mis-shooting!
 ;; But, this is not working
