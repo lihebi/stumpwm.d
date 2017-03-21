@@ -13,6 +13,10 @@
 ;; (xft:get-font-families)
 ;; Done!
 
+(if (not (find "Source Code Pro" (xft:get-font-families)
+               :test #'equal))
+    (xft:cache-fonts))
+
 ;; Some note for using REPL (slime) (sbcl)
 ;; load a module by (ql:quickload "xxx")
 
