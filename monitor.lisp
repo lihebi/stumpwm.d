@@ -1,8 +1,13 @@
-(defcommand rotate-left () ()
-            (run-shell-command "xrandr --output VGA-1 --rotate left"))
+(defvar *monitor* "VGA-1")
+(setq *monitor* "DP-2")
 
-(defcommand rotate-right () ()
-            (run-shell-command "xrandr --output VGA-1 --rotate right"))
+(defun rotate(direction) ()
+       (run-shell-command
+        (concatenate 'string "xrandr --output " *monitor* " --rotate " direction)))
 
-(defcommand rotate-normal () ()
-            (run-shell-command "xrandr --output VGA-1 --rotate normal"))
+(defcommand rotate-left() ()
+            (rotate "left"))
+(defcommand rotate-right() ()
+            (rotate "right"))
+(defcommand rotate-normal() ()
+            (rotate "normal"))
