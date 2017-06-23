@@ -18,12 +18,12 @@
 ;;   (run-or-raise "conkeror" '(:class "Conkeror")))
 
 (defcommand browser () ()
-  "run or raise chromium"
-  (run-or-raise
-   ;; "chromium"
-   ;; for bypassing the chromium restriction in the recent update
-   "chromium --enable-remote-extensions"
-   '(:class "Chromium")))
+            "run or raise chromium"
+            (run-or-raise
+             ;; "chromium"
+             ;; for bypassing the chromium restriction in the recent update
+             "chromium --enable-remote-extensions"
+             '(:class "Chromium")))
 
 (define-key *root-map* (kbd "w") "browser")
 
@@ -32,6 +32,14 @@
             (run-shell-command "chromium --enable-remote-extensions"))
 ;; (undefine-key *root-map* (kbd "C-w"))
 (define-key *root-map* (kbd "C-w") "browser-new")
+
+
+(defcommand firefox () ()
+            "run or raise firefox"
+            (run-or-raise
+             "firefox"
+             '(:class "Firefox")))
+(define-key *root-map* (kbd "u") "firefox")
 
 (defcommand terminal () ()
             "run or raise urxvt"
