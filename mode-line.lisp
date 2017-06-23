@@ -6,8 +6,25 @@
 ;; (setf *mode-line-timeout* 1)
 
 ;; smart modeline
-(if (not (head-mode-line (current-head)))
-    (toggle-mode-line (current-screen) (current-head)))
+;; (if (not (head-mode-line (current-head)))
+;;     (toggle-mode-line (current-screen) (current-head)))
+
+(defun start-mode-line (head)
+  (enable-mode-line (current-screen) head t))
+;; start mode line for all heads on the current screen
+(map nil 'start-mode-line (screen-heads (current-screen)))
+
+;; toggle mode line for all heads
+;; (defcommand toggle-all-mode-line () ()
+;;             (map nil (lambda (head) (toggle-mode-line (current-screen) head))
+;;                  (screen-heads (current-screen))))
+
+;; (map nil '1+ '(2 3))
+;; ((lambda (head) (enable-mode-line (current-screen) head t)) (first (screen-heads (current-screen))))
+
+;; (toggle-mode-line)
+;; (screen-heads (group-screen (current-group)))
+;; (screen-heads (current-screen))
 
 ;; BG time
 (defun pretty-time ()
