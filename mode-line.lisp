@@ -63,7 +63,15 @@
 (defcommand hebi-graphic-temp()()
             (graphic-temp))
 
+
+;; enable to use this, you need also set the user to have permision to
+;; use sudo for this command without password. To do that, edit
+;; sudoers file and use
+;; %wheel ALL=(ALL) ALL
+;; %wheel ALL=(ALL) NOPASSWD: /usr/bin/iwconfig
+;; both of them should present
 (setq wifi:*iwconfig-path* "sudo /sbin/iwconfig")
+
 (defun nvidia-temp()
   (run-shell-command "nvidia-settings -q gpucoretemp | grep Attribute | awk '{print $4}'" t))
 
