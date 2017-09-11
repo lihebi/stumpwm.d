@@ -63,6 +63,7 @@
 (defcommand hebi-graphic-temp()()
             (graphic-temp))
 
+(setq wifi:*iwconfig-path* "sudo /sbin/iwconfig")
 (defun nvidia-temp()
   (run-shell-command "nvidia-settings -q gpucoretemp | grep Attribute | awk '{print $4}'" t))
 
@@ -79,6 +80,6 @@
             " ^6%c %f %t" ; cpu
             " ^3%M"
             ;; " %b" ; battery
-            ;; " %B" ; battery-portable
-            ;; " %I" ; wifi
+            " ^6*%B" ; battery-portable
+            " ^3%I" ; wifi
             ))
