@@ -33,12 +33,16 @@
               )
             )
 
-(define-key *top-map* (kbd "XF86AudioLowerVolume") "amixer-Front-1-")
-(define-key *top-map* (kbd "XF86AudioRaiseVolume") "amixer-Front-1+")
+;; require alsa-utils package for amixer command
+;; require also pulseaudio-alsa
+(define-key *top-map* (kbd "XF86AudioLowerVolume") "amixer-Master-1-")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume") "amixer-Master-1+")
 (define-key *top-map* (kbd "XF86AudioMute") "amixer-Master-toggle pulse")
 
+(define-key *top-map* (kbd "XF86MonBrightnessUp") "brightness-inc")
+(define-key *top-map* (kbd "XF86MonBrightnessDown") "brightness-dec")
+
+;; need to chown first in order to adjust brightness
 (define-sudo-command brightness-chown "chown hebi:hebi /sys/class/backlight/intel_backlight/brightness")
 ;; (define-key *root-map* (kbd "b") "brightness-inc")
 ;; (define-key *root-map* (kbd "C-b") "brightness-dec")
-(define-key *root-map* (kbd "XF86MonBrightnessUp") "brightness-inc")
-(define-key *root-map* (kbd "XF86MonBrightnessDown") "brightness-dec")
