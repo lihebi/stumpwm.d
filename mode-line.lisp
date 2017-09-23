@@ -70,7 +70,10 @@
 ;; %wheel ALL=(ALL) ALL
 ;; %wheel ALL=(ALL) NOPASSWD: /usr/bin/iwconfig
 ;; both of them should present
-(setq wifi:*iwconfig-path* "sudo /sbin/iwconfig")
+;; I don't need this field, it is buggy
+;; (setq wifi:*iwconfig-path* "sudo /sbin/iwconfig")
+
+(load "~/.stumpwm.d/patch-wifi.lisp")
 
 (defun nvidia-temp()
   (run-shell-command "nvidia-settings -q gpucoretemp | grep Attribute | awk '{print $4}'" t))
@@ -85,9 +88,10 @@
       (list "[^B%n^b] %W " ; groups/windows
             "^>" ; right align
             " ^2* " '(:eval (pretty-time)); date
-            " ^6%c %f %t" ; cpu
-            " ^3%M"
+            ;; " ^6%c %f %t" ; cpu
+            " ^6%c" ; cpu
+            " %M"
+            " ^6%i" ; wifi
             ;; " %b" ; battery
-            " ^6*%B" ; battery-portable
-            " ^3%I" ; wifi
+            " ^2*%B" ; battery-portable
             ))
