@@ -83,10 +83,35 @@
 ;;   (declare (ignore ml))
 ;;   (graphic-temp))
 
+
+;; %S: status: playing, paused, stopped
+;; %s: shuffle
+;; %r: repeat
+;; %F: crossfade?
+;; %a: artist
+;; %t: title
+;; %n: number
+;; %p: total playlist length
+
+(setq mpd:*mpd-modeline-fmt* "%S [%s;%r;%F]: %a - %t (%n/%p)")
+
+;; commands
+;; mpd-toggle-pause (SPC)
+;; mpd-toggle-repeat (r)
+;; mpd-toggle-random (s)
+;; mpd-toggle-xfade (f)
+;; mpd-stop (o)
+;; mpd-play (p)
+;; mpd-next (m)
+;; mpd-prev (l)
+(define-key *root-map* (kbd "m") nil)
+(define-key *root-map* (kbd "m") mpd:*mpd-map*)
+
 ;; Modeline format
 (setf *screen-mode-line-format*
       (list "[^B%n^b] %W " ; groups/windows
             "^>" ; right align
+            "%m"
             " ^2* " '(:eval (pretty-time)); date
             ;; " ^6%c %f %t" ; cpu
             " ^6%c" ; cpu

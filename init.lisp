@@ -30,6 +30,7 @@
 (load-module "battery-portable")
 (load-module "wifi")
 (load-module "amixer")
+(load-module "mpd")
 
 
 (load "~/.stumpwm.d/sudo.lisp")
@@ -40,12 +41,17 @@
 (load "~/.stumpwm.d/frame.lisp")
 (load "~/.stumpwm.d/app.lisp")
 (load "~/.stumpwm.d/mac.lisp")
-(load "~/.stumpwm.d/monitor.lisp")
+
+;; causing errors with stumpwm-git version from AUR
+;; (load "~/.stumpwm.d/monitor.lisp")
+
 
 
 ;; These two lines requires cl packages, remove so that I can get a smooth boot
 (load "~/.stumpwm.d/font.lisp")
-(load "~/.stumpwm.d/screenshot.lisp")
+;; (load "~/.stumpwm.d/screenshot.lisp")
+
+
 
 ;; I want to disable C-t k because it got mis-shooting!
 ;; But, this is not working
