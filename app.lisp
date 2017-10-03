@@ -41,6 +41,11 @@
 ;;   "run or raise conkeror"
 ;;   (run-or-raise "conkeror" '(:class "Conkeror")))
 
+
+(defcommand reset-bg () ()
+            (run-shell-command "sh ~/.fehbg"))
+
+
 (defcommand browser () ()
             "run or raise chromium"
             (run-or-raise
