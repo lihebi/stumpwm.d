@@ -94,10 +94,11 @@
 
 ;; :STRING will function incorrect when used NOT interactively
 ;;    where it only get the first word
+;; need to install translate-shell from AUR
 (defcommand dict (word) ((:REST "Look Up: "))
             (echo (concat "looking up .." word))
             ;; if starting with xdm, stumpwm will not have the $PATH variable set up! Thus the full path to "trans" program needs to be specified
-            (echo (run-shell-command (concat "/home/hebi/bin/trans -b :zh " word) t)))
+            (echo (run-shell-command (concat "trans -b :zh " word) t)))
 
 (defcommand dict-xsel () ()
             (let ((word (get-x-selection)))
