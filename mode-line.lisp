@@ -109,14 +109,17 @@
 
 ;; Modeline format
 (setf *screen-mode-line-format*
-      (list "[^B%n^b] %W " ; groups/windows
-            "^>" ; right align
+      (list "[^B%n^b] %W "              ; groups/windows
+            "^>"                        ; right align
             "%m"
-            " ^2* " '(:eval (pretty-time)); date
+            " ^2* " '(:eval (pretty-time)) ; date
             ;; " ^6%c %f %t" ; cpu
-            " ^6%c" ; cpu
+            " ^6%c"                     ; cpu
             " %M"
-            " ^6%i" ; wifi
-            ;; " %b" ; battery
-            " ^2*%B" ; battery-portable
+            ;; " ^6%i"                     ; wifi
+            '(:eval (string-trim '(#\Space #\Newline)
+                     (stumpwm:run-shell-command
+                      "iw dev | awk '/ssid/ {print $2}'" t)))
+            " ^2*%B"                    ; battery-portable
             ))
+

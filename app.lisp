@@ -45,6 +45,7 @@
 (defcommand reset-bg () ()
             (run-shell-command "sh ~/.fehbg"))
 
+(define-sudo-command wifi-connect "iw dev wlp3s0 connect \"IASTATE\"")
 
 (defcommand browser () ()
             "run or raise chromium"
