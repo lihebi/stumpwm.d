@@ -99,7 +99,20 @@
 (defcommand dict (word) ((:REST "Look Up: "))
             (echo (concat "looking up .." word))
             ;; if starting with xdm, stumpwm will not have the $PATH variable set up! Thus the full path to "trans" program needs to be specified
-            (echo (run-shell-command (concat "trans -b :zh " word) t)))
+            (echo (run-shell-command (concat "trans"
+                           " -show-original-phonetics Y"
+                           " -show-translation-phonetics n"
+                           " -show-languages n"
+                           " -show-prompt-message n"
+                           " -show-dictionary n"
+                           " -no-theme"
+                           " -no-ansi"
+                           " :zh"
+                           " "
+                           word)
+                   t)))
+
+
 
 (defcommand dict-xsel () ()
             (let ((word (get-x-selection)))
