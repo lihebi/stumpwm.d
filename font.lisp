@@ -47,9 +47,10 @@
 ;; (xft:cache-font-file "/usr/share/fonts/adobe-source-code-pro/SourceCodePro-Regular.otf")
 (set-font
  (list
+  (make-instance 'xft:font :family "WenQuanYi Micro Hei Mono" :subfamily "Regular" :size 12)
   ;; (make-instance 'xft:font :family "WenQuanYi Zen Hei Mono" :subfamily "Regular" :size 12)
   ;; (make-instance 'xft:font :family "Source Han Sans CN" :subfamily "Regular" :size 12)
-  (make-instance 'xft:font :family "WenQuanYi Zen Hei" :subfamily "Regular" :size 12)
+  ;; (make-instance 'xft:font :family "WenQuanYi Zen Hei" :subfamily "Regular" :size 12)
   
   (make-instance 'xft:font :family "DejaVu Sans Mono" :subfamily "Oblique" :size 12)
   ;; (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 12)

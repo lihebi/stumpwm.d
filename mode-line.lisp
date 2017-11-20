@@ -28,7 +28,6 @@
 
 ;; BG time
 (defun pretty-time ()
-  "Returns the date formatted as '17:19:51 Неделя, 27 Април 2014'."
   (defun stringify-dow (dow)
     (nth dow '("Monday" "Tuesday" "Wednesday" "Thurday" "Friday" "Saturday" "Sunday")))
   (defun stringify-mon (mon)
