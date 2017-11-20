@@ -9,13 +9,12 @@
 ;;    ("/usr/share/fonts/" "/home/hebi/.fonts/")
 ;;    So move font files up to the ~/.fonts
 ;; A combo:
-;; (xft:cache-fonts)
-;; (xft:get-font-families)
 ;; Done!
 
-(if (not (find "Source Code Pro" (xft:get-font-families)
-               :test #'equal))
-    (xft:cache-fonts))
+
+;; (if (not (find "Source Code Pro" (xft:get-font-families)
+;;                :test #'equal))
+;;     (xft:cache-fonts))
 
 ;; Some note for using REPL (slime) (sbcl)
 ;; load a module by (ql:quickload "xxx")
@@ -40,11 +39,23 @@
 ;;     (144 16)
 ;;     (otherwise 14)))
 
+;; (setq xft:*font-dirs*
+;;       (cons "/usr/share/fonts/adobe-source-code-pro/"
+;;             xft:*font-dirs*))
+;; (xft:cache-fonts)
+;; (xft:get-font-families)
+;; (xft:cache-font-file "/usr/share/fonts/adobe-source-code-pro/SourceCodePro-Regular.otf")
 (set-font
  (list
-  (make-instance 'xft:font :family "WenQuanYi Micro Hei Mono" :subfamily "Regular" :size 12)
-  ;; (make-instance 'xft:font :family "DejaVu Sans Mono" :subfamily "Oblique" :size 16)
-  ;; (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 20)
+  ;; (make-instance 'xft:font :family "WenQuanYi Zen Hei Mono" :subfamily "Regular" :size 12)
+  ;; (make-instance 'xft:font :family "Source Han Sans CN" :subfamily "Regular" :size 12)
+  (make-instance 'xft:font :family "WenQuanYi Zen Hei" :subfamily "Regular" :size 12)
+  
+  (make-instance 'xft:font :family "DejaVu Sans Mono" :subfamily "Oblique" :size 12)
+  ;; (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 12)
   ;; (make-instance 'xft:font :family "cwTeXFangSong" :subfamily "Medium" :size 16)
   )
  )
+
+;; (set-font "Source Code Pro")
+;; (set-font "-xos4-terminus-medium-r-normal--10-140-72-72-c-80-iso8859-15")
