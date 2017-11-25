@@ -12,9 +12,9 @@
 ;; Done!
 
 
-;; (if (not (find "Source Code Pro" (xft:get-font-families)
-;;                :test #'equal))
-;;     (xft:cache-fonts))
+(if (not (find "Source Code Pro" (xft:get-font-families)
+               :test #'equal))
+    (xft:cache-fonts))
 
 ;; Some note for using REPL (slime) (sbcl)
 ;; load a module by (ql:quickload "xxx")
@@ -23,11 +23,12 @@
 ;; (HEBI: run this to cache fonts (not the fc-cache))
 ;; (xft:cache-fonts)
 
-;; (defun get-dpi()
-;;   (values
-;;    (parse-integer
-;;     (run-shell-command
-;;      "echo $(xrdb -query | grep dpi | awk '{print $2}') | bc | tr '\n' ' '" t))))
+(defun get-dpi()
+  (values
+   (parse-integer
+    (run-shell-command
+     ;; require bc to be installed
+     "echo $(xrdb -query | grep dpi | awk '{print $2}') | bc | tr '\n' ' '" t))))
 
 ;; ;; (defcommand hebi()()
 ;; ;;             (echo (get-dpi))
@@ -39,6 +40,9 @@
 ;;     (144 16)
 ;;     (otherwise 14)))
 
+(defun get-font-size ()
+  (/ (get-dpi) 8))
+
 ;; (setq xft:*font-dirs*
 ;;       (cons "/usr/share/fonts/adobe-source-code-pro/"
 ;;             xft:*font-dirs*))
@@ -47,13 +51,16 @@
 ;; (xft:cache-font-file "/usr/share/fonts/adobe-source-code-pro/SourceCodePro-Regular.otf")
 (set-font
  (list
-  (make-instance 'xft:font :family "WenQuanYi Micro Hei Mono" :subfamily "Regular" :size 12)
+  ;; this size determines the size of mode line
+  ;; 12: my desktop
+  ;; 16: tp25
+  (make-instance 'xft:font :family "WenQuanYi Micro Hei Mono" :subfamily "Regular" :size (get-font-size))
   ;; (make-instance 'xft:font :family "WenQuanYi Zen Hei Mono" :subfamily "Regular" :size 12)
   ;; (make-instance 'xft:font :family "Source Han Sans CN" :subfamily "Regular" :size 12)
   ;; (make-instance 'xft:font :family "WenQuanYi Zen Hei" :subfamily "Regular" :size 12)
   
-  (make-instance 'xft:font :family "DejaVu Sans Mono" :subfamily "Oblique" :size 12)
-  ;; (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 12)
+  ;; (make-instance 'xft:font :family "DejaVu Sans Mono" :subfamily "Oblique" :size 12)
+  (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size (get-font-size))
   ;; (make-instance 'xft:font :family "cwTeXFangSong" :subfamily "Medium" :size 16)
   )
  )
