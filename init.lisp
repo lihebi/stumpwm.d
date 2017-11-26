@@ -40,6 +40,7 @@
 
 (load "~/.stumpwm.d/frame.lisp")
 (load "~/.stumpwm.d/app.lisp")
+(load "~/.stumpwm.d/xinput.lisp")
 (load "~/.stumpwm.d/mac.lisp")
 
 ;; causing errors with stumpwm-git version from AUR
