@@ -14,28 +14,6 @@
             (run-shell-command "emacs --daemon"))
 
 
-;; run this to map all input pointers for natural scrolling
-(require "cl-ppcre")
-(defcommand natural-scrolling() ()
-            (let* ((cmd (concat "xinput list"
-                                "|" "egrep \"slave.*pointer\""
-                                "|" "grep -v XTEST"
-                                "|" "sed -e 's/^.*id=//' -e 's/\\s.*$//'"))
-                   (str (run-shell-command cmd t))
-                   (sp (cl-ppcre:split "\\s+" str))
-                   (cmds (mapcar (lambda (d)
-                              (concatenate
-                               'string
-                               "xinput set-prop "
-                               d
-                               " \"libinput Natural Scrolling Enabled\" 1")) 
-                                 sp)))
-              (mapcar (lambda (cmd) (run-shell-command cmd)) cmds)))
-;; I actually want to run it when I start stumpwm
-(natural-scrolling)
-;; this does not work for newly added device by hot plug, so I need to
-;; manually call this command. Is there a way to automatically do
-;; this?
 
 ;; (defcommand browser () ()
 ;;   "run or raise conkeror"
