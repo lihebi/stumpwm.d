@@ -23,6 +23,10 @@
 
 ;; (stumpwm:init-load-path "~/.stumpwm.d/modules/")
 ;; (stumpwm:add-to-load-path "~/.stumpwm.d/modules/util/ttf-fonts")
+
+;; FIXME does not check if exists
+(stumpwm:init-load-path "~/.stumpwm.d/contrib/")
+
 (load-module "ttf-fonts")
 (load-module "cpu")
 (load-module "mem")
