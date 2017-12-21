@@ -48,7 +48,7 @@
 (load "~/.stumpwm.d/mac.lisp")
 
 ;; causing errors with stumpwm-git version from AUR
-;; (load "~/.stumpwm.d/monitor.lisp")
+(load "~/.stumpwm.d/monitor.lisp")
 
 
 
