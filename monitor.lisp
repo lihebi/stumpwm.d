@@ -1,7 +1,11 @@
 ;; direction: left, right, normal
+(defun turn-on (monitor)
+  (run-shell-command
+   (concatenate 'string "xrandr --output " monitor " --auto")))
+
 (defun rotate-display (monitor direction)
   (run-shell-command
-   (concatenate 'string "xrandr --output " monitor " --rotate " direction)))
+   (concatenate 'string "xrandr --output " monitor " --auto --rotate " direction)))
 
 (defun left-of (l r)
   (run-shell-command
@@ -18,6 +22,8 @@
 (defvar *right-monitor* "DP-2")
 
 (defcommand adjust-display () ()
+            (turn-on *left-monitor*)
+            (turn-on *right-monitor*)
             (rotate-display *left-monitor* "left")
             (left-of *left-monitor* *right-monitor*)
             (144-hz *right-monitor*))
