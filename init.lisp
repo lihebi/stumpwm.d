@@ -54,7 +54,7 @@
 
 ;; These two lines requires cl packages, remove so that I can get a smooth boot
 (load "~/.stumpwm.d/font.lisp")
-;; (load "~/.stumpwm.d/screenshot.lisp")
+(load "~/.stumpwm.d/screenshot.lisp")
 
 
 
