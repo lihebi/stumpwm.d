@@ -22,10 +22,11 @@
 (defvar *right-monitor* "DP-2")
 
 (defcommand adjust-display () ()
-            (turn-on *left-monitor*)
-            (turn-on *right-monitor*)
+            ;; (turn-on *left-monitor*)
+            ;; (turn-on *right-monitor*)
             (rotate-display *left-monitor* "left")
             (left-of *left-monitor* *right-monitor*)
             (144-hz *right-monitor*))
+
 ;; (adjust-display)
 ;; (adjust-display)
