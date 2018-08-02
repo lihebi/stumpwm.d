@@ -23,6 +23,8 @@
 ;; (HEBI: run this to cache fonts (not the fc-cache))
 ;; (xft:cache-fonts)
 
+
+;; Another reason to fail is not having xrdb, bc, tr installed
 (defun get-dpi()
   (values
    (parse-integer

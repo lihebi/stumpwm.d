@@ -68,7 +68,15 @@
 
 (define-key *root-map* (kbd "y") "xselyank")
 
-
+(defcommand swank-server () ()
+  ;; create server for live debugging
+  ;; (require 'swank)
+  ;; (swank:create-server)
+  (require :swank)
+  (swank-loader:init)
+  (swank:create-server :port 4004
+                       :style swank:*communication-style*
+                       :dont-close t))
 
 
 ;; :STRING will function incorrect when used NOT interactively
