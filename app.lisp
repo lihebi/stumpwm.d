@@ -68,11 +68,11 @@
 
 (define-key *root-map* (kbd "y") "xselyank")
 
+(require :swank)
 (defcommand swank-server () ()
   ;; create server for live debugging
   ;; (require 'swank)
   ;; (swank:create-server)
-  (require :swank)
   (swank-loader:init)
   (swank:create-server :port 4004
                        :style swank:*communication-style*
