@@ -70,13 +70,13 @@
 
 (require :swank)
 (defcommand swank-server () ()
-  ;; create server for live debugging
-  ;; (require 'swank)
-  ;; (swank:create-server)
-  (swank-loader:init)
-  (swank:create-server :port 4004
-                       :style swank:*communication-style*
-                       :dont-close t))
+            ;; create server for live debugging
+            ;; (require 'swank)
+            ;; (swank:create-server)
+            (swank-loader:init)
+            (swank:create-server :port 4004
+                                 :style swank:*communication-style*
+                                 :dont-close t))
 
 
 ;; :STRING will function incorrect when used NOT interactively
@@ -84,19 +84,27 @@
 ;; need to install translate-shell from AUR
 (defcommand dict (word) ((:REST "Look Up: "))
             (echo (concat "looking up .." word))
-            ;; if starting with xdm, stumpwm will not have the $PATH variable set up! Thus the full path to "trans" program needs to be specified
-            (echo (run-shell-command (concat "trans"
-                           " -show-original-phonetics Y"
-                           " -show-translation-phonetics n"
-                           " -show-languages n"
-                           " -show-prompt-message n"
-                           " -show-dictionary n"
-                           " -no-theme"
-                           " -no-ansi"
-                           " :zh"
-                           " "
-                           word)
-                   t)))
+            ;; if starting with xdm, stumpwm will not have the $PATH variable
+            ;; set up! Thus the full path to "trans" program needs to be
+            ;; specified
+            (let ((chinese (string-trim (string #\Newline)
+                                        (run-shell-command
+                                         (concat "trans"
+                                                 ;; " -show-original-phonetics Y"
+                                                 ;; " -show-translation-phonetics n"
+                                                 ;; " -show-languages n"
+                                                 ;; " -show-prompt-message n"
+                                                 ;; " -show-dictionary n"
+                                                 ;; " -no-theme"
+                                                 ;; " -no-ansi"
+                                                 " -b"
+                                                 " :zh"
+                                                 " "
+                                                 word)
+                                         t))))
+              ;; set to x-selection
+              (set-x-selection chinese)
+              (echo chinese)))
 
 
 
