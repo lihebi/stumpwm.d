@@ -2,61 +2,41 @@
 ;;; .stumpwmrc --- StumpWM Init File
 (in-package :stumpwm)
 
-;; (in-package :stumpwm)
+;; Make sure quicklisp is not installing duplicated packages then
+;; system level installation. Otherwise there will be "cannot define
+;; meta class" like error.
+(load "~/quicklisp/setup.lisp")
 
 ;; disable welcome message
 (setf *startup-message* nil)
 
-;; Not sure which should comes first!!
-;; TODO 1. make this config more robust in terms of not installing quicklisp, clx-truetype, zpng
-;; TODO 2. make the setup-debian script complete by installing everything
-;; (stumpwm:init-load-path "~/.stumpwm.d/modules/")
-
-
-(stumpwm:init-load-path "~/quicklisp/dists/quicklisp/software/")
-(stumpwm:init-load-path "/usr/share/common-lisp/source")
-
-;; when installing stumpwm-contrib and quicklisp via AUR, these two pathes needs to be added
-(stumpwm:init-load-path "/usr/lib/quicklisp/dists/quicklisp/software/")
-(stumpwm:init-load-path "/usr/share/stumpwm/contrib/")
-
-
-;; (stumpwm:init-load-path "~/.stumpwm.d/modules/")
-;; (stumpwm:add-to-load-path "~/.stumpwm.d/modules/util/ttf-fonts")
-
-;; FIXME does not check if exists
+;; FIXME does not check if exists. Make sure this directory exists
 (stumpwm:init-load-path "~/.stumpwm.d/contrib/")
 
-(load-module "ttf-fonts")
 (load-module "cpu")
 (load-module "mem")
-;; The "battery" will stuck on macbook
 (load-module "battery-portable")
 (load-module "wifi")
 (load-module "amixer")
 (load-module "mpd")
 
+;; this might cause problem, and quicklisp should be set up
+(load-module "ttf-fonts")
 
 (load "~/.stumpwm.d/sudo.lisp")
 (load "~/.stumpwm.d/mode-line.lisp")
 (load "~/.stumpwm.d/group.lisp")
-
 
 (load "~/.stumpwm.d/frame.lisp")
 (load "~/.stumpwm.d/app.lisp")
 (load "~/.stumpwm.d/xinput.lisp")
 (load "~/.stumpwm.d/mac.lisp")
 
-;; causing errors with stumpwm-git version from AUR
 (load "~/.stumpwm.d/monitor.lisp")
-
-
 
 ;; These two lines requires cl packages, remove so that I can get a smooth boot
 (load "~/.stumpwm.d/font.lisp")
 (load "~/.stumpwm.d/screenshot.lisp")
-
-
 
 ;; I want to disable C-t k because it got mis-shooting!
 ;; But, this is not working
@@ -66,6 +46,8 @@
 
 ;; The C-t k actually mapped to "delete", while C-t K mapped to "kill"
 
+(run-shell-command "xrdb ~/.Xresources")
+(run-shell-command "xmodmap ~/.Xmodmap")
 
 (defcommand suspend () ()
             (run-shell-command "systemctl suspend"))
