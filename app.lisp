@@ -68,6 +68,13 @@
 
 (define-key *root-map* (kbd "y") "xselyank")
 
+(defcommand vncviewer () ()
+            (run-or-raise
+             "vncviewer ubuntu.lihebi.com:5905"
+             '(:class "Vncviewer")))
+(define-key *root-map* (kbd "v") "vncviewer")
+
+
 (require :swank)
 (defcommand swank-server () ()
             ;; create server for live debugging
