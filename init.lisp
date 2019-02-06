@@ -40,9 +40,12 @@
 
 ;; I want to disable C-t k because it got mis-shooting!
 ;; But, this is not working
-(undefine-key *root-map* (kbd "k"))
+;; (undefine-key *root-map* (kbd "k"))
 ;; I have to "define" it to do some dummy echo
-(define-key *root-map* (kbd "k") "echo Zzz..")
+;; (define-key *root-map* (kbd "k") "echo Zzz..")
+
+;; (define-key *root-map* (kbd "k")
+;;   (delete-window))
 
 ;; The C-t k actually mapped to "delete", while C-t K mapped to "kill"
 
