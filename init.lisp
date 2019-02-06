@@ -13,6 +13,14 @@
 ;; FIXME does not check if exists. Make sure this directory exists
 (stumpwm:init-load-path "~/.stumpwm.d/contrib/")
 
+;; add guix profile bin path to stupmwm
+(let ((old-path (getenv "PATH")))
+  (setf (getenv "PATH")
+        (concatenate 'string
+                     "/home/hebi/.guix-profile/bin/:"
+                     "/home/hebi/bin/:"
+                     old-path)))
+
 (load-module "cpu")
 (load-module "mem")
 (load-module "battery-portable")
