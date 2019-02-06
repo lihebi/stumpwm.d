@@ -30,14 +30,24 @@
             (run-or-raise
              ;; "chromium"
              ;; for bypassing the chromium restriction in the recent update
-             "chromium --enable-remote-extensions"
-             '(:class "Chromium")))
+             ;; "chromium --enable-remote-extensions"
+             "google-chrome --enable-remote-extensions"
+             '(:class "Google-chrome")))
 
 (define-key *root-map* (kbd "w") "browser")
 
 (defcommand browser-new () ()
             "run a new instance of browser"
             (run-shell-command "chromium --enable-remote-extensions"))
+
+(defcommand chrome-app (url) ((:rest "URL (with https!): "))
+            "run a new instance of browser"
+            ;; currently the best option is to open a url in --app
+            ;; mode, such that Ctrl-N is not captured by Chrome. For
+            ;; jupyterlab, currently you need:
+            ;; https://github.com/kpe/jupyterlab-emacskeys
+            (run-shell-command (concat "google-chrome --app=" url)))
+
 ;; (undefine-key *root-map* (kbd "C-w"))
 (define-key *root-map* (kbd "C-w") "browser-new")
 
