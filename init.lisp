@@ -5,13 +5,13 @@
 ;; Make sure quicklisp is not installing duplicated packages then
 ;; system level installation. Otherwise there will be "cannot define
 ;; meta class" like error.
-(load "~/quicklisp/setup.lisp")
+;; (load "~/quicklisp/setup.lisp")
 
 ;; disable welcome message
 (setf *startup-message* nil)
 
 ;; FIXME does not check if exists. Make sure this directory exists
-(stumpwm:init-load-path "~/.stumpwm.d/contrib/")
+(stumpwm:init-load-path "~/.stumpwm.d/stumpwm-contrib/")
 
 ;; add guix profile bin path to stupmwm
 (let ((old-path (getenv "PATH")))

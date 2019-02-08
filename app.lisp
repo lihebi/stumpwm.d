@@ -31,8 +31,8 @@
              ;; "chromium"
              ;; for bypassing the chromium restriction in the recent update
              ;; "chromium --enable-remote-extensions"
-             "google-chrome --enable-remote-extensions"
-             '(:class "Google-chrome")))
+             "CHROMIUM_ENABLE_WEB_STORE=yes chromium"
+             '(:class "Chromium")))
 
 (define-key *root-map* (kbd "w") "browser")
 
