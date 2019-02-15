@@ -2,17 +2,16 @@
   (require 'asdf)
   (asdf:load-system 'zpng))
 
-(defcommand screenshot
-    (filename)
-  ((:rest "Filename: "))
-  "Make screenshot of root window"
-  (%screenshot-window (screen-root (current-screen)) filename))
+(defcommand screenshot (filename) ((:rest "Filename: "))
+            "Make screenshot of root window"
+            (%screenshot-window (screen-root (current-screen)) filename))
 
-(defcommand screenshot-window
-    (filename)
-  ((:rest "Filename: "))
-  "Make screenshot of focus window"
-  (%screenshot-window (window-xwin (current-window)) filename))
+(defcommand screenshot-window (filename) ((:rest "Filename: "))
+            "Make screenshot of focus window"
+            (%screenshot-window (window-xwin (current-window)) filename))
+
+(defcommand screenshot-area () ()
+            (run-shell-command "gnome-screenshot -a"))
 
 (defun %screenshot-window (drawable file &key (height (xlib:drawable-height drawable))
                                            (width (xlib:drawable-width drawable)))
