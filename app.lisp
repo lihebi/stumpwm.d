@@ -59,12 +59,9 @@
              '(:class "Firefox")))
 (define-key *root-map* (kbd "u") "firefox")
 
-;; (defcommand terminal () ()
-;;             "run or raise urxvt"
-;;             (run-or-raise "urxvt -e tmux" '(:class "URxvt")))
 (defcommand terminal () ()
-            "run or raise cool-retro-term"
-            (run-or-raise "cool-retro-term -e tmux" '(:class "term")))
+            "run or raise urxvt"
+            (run-or-raise "urxvt -e tmux" '(:class "URxvt")))
 (define-key *root-map* (kbd "c") "terminal")
 
 
