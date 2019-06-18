@@ -72,6 +72,7 @@
 
 (run-shell-command "xrdb ~/.Xresources")
 (run-shell-command "xmodmap ~/.Xmodmap")
+(run-shell-command "sh ~/.fehbg")
 
 (defcommand suspend () ()
             (run-shell-command "systemctl suspend"))
