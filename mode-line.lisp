@@ -72,7 +72,7 @@
 ;; I don't need this field, it is buggy
 ;; (setq wifi:*iwconfig-path* "sudo /sbin/iwconfig")
 
-(load "~/.stumpwm.d/patch-wifi.lisp")
+;; (load "~/.stumpwm.d/patch-wifi.lisp")
 
 (defun nvidia-temp()
   (run-shell-command "nvidia-settings -q gpucoretemp | grep Attribute | awk '{print $4}'" t))
