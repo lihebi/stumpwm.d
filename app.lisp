@@ -1,3 +1,6 @@
+(defcommand screenshot-area () ()
+            (run-shell-command "gnome-screenshot -a"))
+
 (defcommand emacs-with-server () ()
             "run-or-raise emacs"
             (run-or-raise "emacsclient -ca emacs" '(:class "Emacs")))

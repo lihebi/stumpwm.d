@@ -10,9 +10,6 @@
             "Make screenshot of focus window"
             (%screenshot-window (window-xwin (current-window)) filename))
 
-(defcommand screenshot-area () ()
-            (run-shell-command "gnome-screenshot -a"))
-
 (defun %screenshot-window (drawable file &key (height (xlib:drawable-height drawable))
                                            (width (xlib:drawable-width drawable)))
   (let* ((png (make-instance 'zpng:pixel-streamed-png
