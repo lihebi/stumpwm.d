@@ -39,6 +39,9 @@
 
 (define-key *root-map* (kbd "w") "browser")
 
+;; I actually do not need to install from chrome webstore. I just need
+;; one extension: videospeed controller, and I can install from
+;; source: https://github.com/igrigorik/videospeed
 (defcommand browser-new () ()
             "run a new instance of browser"
             (run-shell-command "chromium --enable-remote-extensions"))

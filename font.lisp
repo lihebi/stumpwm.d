@@ -24,10 +24,10 @@
   ;; this size determines the size of mode line
   (make-instance 'xft:font
                  :family "WenQuanYi Micro Hei Mono"
-                 :subfamily "Regular" :size 16)
+                 :subfamily "Regular" :size 20)
   (make-instance 'xft:font
                  :family "Source Code Pro"
-                 :subfamily "Regular" :size 16)))
+                 :subfamily "Regular" :size 20)))
 
 ;; (set-font "Source Code Pro")
 ;; (set-font "-xos4-terminus-medium-r-normal--10-140-72-72-c-80-iso8859-15")

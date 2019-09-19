@@ -17,7 +17,8 @@
 (let ((old-path (getenv "PATH")))
   (setf (getenv "PATH")
         (concatenate 'string
-                     "/home/hebi/.guix-profile/bin/:"
+                     "/home/hebi/.config/guix/current/bin/:"
+                     ;; "/home/hebi/.guix-profile/bin/:"
                      "/home/hebi/bin/:"
                      old-path)))
 
