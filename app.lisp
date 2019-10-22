@@ -16,6 +16,11 @@
             "Run emacs server"
             (run-shell-command "emacs --daemon"))
 
+(defcommand run-atom () ()
+            "Atom"
+            (run-or-raise "atom" '(:class "Atom")))
+(define-key *root-map* (kbd "a") "run-atom")
+
 
 
 ;; (defcommand browser () ()
