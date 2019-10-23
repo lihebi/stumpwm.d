@@ -91,7 +91,7 @@
 
 (defcommand vncviewer () ()
             (run-or-raise
-             "vncviewer ubuntu.lihebi.com:5905"
+             "vncviewer"
              '(:class "Vncviewer")))
 (define-key *root-map* (kbd "v") "vncviewer")
 
