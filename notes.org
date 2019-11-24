@@ -1,0 +1,31 @@
+#+TITLE: Implementation notes
+
+* TODO-list
+
+** Fonts
+In case clx-truetype is not correctly setup, I can use the terminus font.
+But this is very awkward and should NOT be used.
+
+Install by
+
+#+begin_example
+pacman -S terminus-font
+#+end_example
+
+then look into =/usr/share/fonts/misc/fonts.dir= to find the name, and put e.g.:
+
+#+BEGIN_SRC lisp
+(set-font "-xos4-terminus-medium-r-normal--32-320-72-72-c-160-iso10646-1")
+#+END_SRC
+
+
+** ttc fonts
+Both wqy_microhei and wqy_zenhei offers ttc fonts. However, common lisp
+[[https://github.com/xach/zpb-ttf][zpb-ttf]] library only supports ttf. The
+NixOS package does not even copy .ttc to
+=/run/current-system/sw/share/X11-fonts=.
+
+Thus, the correct way is probably to use fontforge python interface to convert
+on-the-fly from ttc to ttf? Would that result in multiple ttfs?
+
+Currently I'm assuming =/home/hebi/.hebi/fonts= has .ttf fonts.

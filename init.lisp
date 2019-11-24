@@ -42,21 +42,8 @@
 
 (load "~/.stumpwm.d/monitor.lisp")
 
-;; These two lines requires cl packages, remove so that I can get a smooth boot
-
-;; This might cause problem, and quicklisp should be set up
-
-;; UPDATE ttf-fonts is completely broken. clx-truetype is no longer
-;; anywhere on the Internet. It has caused me so much troubles, I'm
-;; not using it.
-
-;; (load-module "ttf-fonts")
-;; (load "~/.stumpwm.d/font.lisp")
-
-;; Instead, I'm going to use just the terminus font.  Install by
-;; pacman -S terminus-font, then look into
-;; /usr/share/fonts/misc/fonts.dir
-(set-font "-xos4-terminus-medium-r-normal--32-320-72-72-c-160-iso10646-1")
+(load-module "ttf-fonts")
+(load "~/.stumpwm.d/font.lisp")
 
 ;; (load "~/.stumpwm.d/screenshot.lisp")
 
