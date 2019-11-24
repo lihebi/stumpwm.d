@@ -97,15 +97,15 @@
 
 
 
+(require :swank)
 (defcommand swank-server () ()
-  (require :swank)
-  ;; create server for live debugging
-  ;; (require 'swank)
-  ;; (swank:create-server)
-  (swank-loader:init)
-  (swank:create-server :port 4004
-                       :style swank:*communication-style*
-                       :dont-close t))
+            ;; create server for live debugging
+            ;; (require 'swank)
+            ;; (swank:create-server)
+            (swank-loader:init)
+            (swank:create-server :port 4004
+                                 :style swank:*communication-style*
+                                 :dont-close t))
 
 
 ;; :STRING will function incorrect when used NOT interactively
