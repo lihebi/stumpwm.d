@@ -33,8 +33,8 @@
 
 (load "~/.stumpwm.d/monitor.lisp")
 
-(load-module "ttf-fonts")
-(load "~/.stumpwm.d/font.lisp")
+;; (load-module "ttf-fonts")
+;; (load "~/.stumpwm.d/font.lisp")
 
 ;; (load "~/.stumpwm.d/screenshot.lisp")
 
